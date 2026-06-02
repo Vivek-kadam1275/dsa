@@ -1,0 +1,111 @@
+Given an integer x, return true if x is a palindrome, and false otherwise.
+
+ 
+
+Example 1:
+
+Input: x = 121
+Output: true
+Explanation: 121 reads as 121 from left to right and from right to left.
+Example 2:
+
+Input: x = -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Example 3:
+
+Input: x = 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+ 
+
+Constraints:
+
+-231 <= x <= 231 - 1
+ 
+
+Follow up: Could you solve it without converting the integer to a string?
+
+
+Solution 1: Bruteforce reversing whole number
+class Solution {
+    public boolean isPalindrome(int x) {
+        int duplicate=x;
+        int newNum=0;
+        int remainder=0;
+        if(duplicate>0 && duplicate%10==0)
+        {
+            return false;
+        }
+        while(duplicate>0)
+        {
+            // System.out.println("while loop print");
+            remainder=duplicate%10;
+            newNum=newNum*10+remainder;
+            duplicate=duplicate/10;
+        }
+
+        if(x==newNum)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+
+    }
+}
+
+
+
+Solution 2:  using String
+import java.util.*;
+class Solution {
+    public boolean isPalindrome(int x) {
+        
+        String number=Integer.toString(x);
+        StringBuilder strNumber=new StringBuilder(number);
+        strNumber.reverse();
+        // System.out.println(number+" "+strNumber);
+        if(strNumber.toString().equals(number))
+        {
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+
+
+Solution 3: optimal dividing number and checking first and last part,if same then palindrome. There is not need of reversing whole number just divide it and check first and last part
+class Solution {
+    public boolean isPalindrome(int x) {
+        int duplicate=x;
+        int newNum=0;
+        if((duplicate>0 && duplicate%10==0) || duplicate<0)
+        {
+            return false;
+        }
+        while(duplicate>newNum)
+        {
+            int remainder=duplicate%10;
+            newNum=newNum*10 + remainder;
+            duplicate=duplicate/10;
+        }
+
+
+        if(newNum/10==duplicate){
+            return true;
+        }else if(newNum==duplicate)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+
