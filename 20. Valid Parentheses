@@ -43,3 +43,42 @@ Constraints:
 
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
+
+
+
+Solution 1:  Bruteforce . used Stack Data structue which is legacy class ThreadSafe overhead
+import java.util.*;
+class Solution {
+    public boolean isValid(String s) {
+       Stack<Character> st=new Stack<>();
+        
+       for(int i=0;i<s.length();i++)
+       {
+            char curr=s.charAt(i);
+           if(curr=='(' || curr=='{' || curr=='[' )
+           {
+                st.push(curr);
+           }else
+           {
+            if(st.isEmpty())
+            {
+                return false;
+            }
+             char prev=st.peek();
+             if((curr==')' && prev=='(') || (curr=='}' && prev=='{') || (curr==']' && prev=='['))
+             {
+                st.pop();
+             }else
+             {
+                return false;
+             }
+
+           }
+       } 
+        
+
+
+        return st.isEmpty();
+    }
+}
+
