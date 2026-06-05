@@ -82,3 +82,41 @@ class Solution {
     }
 }
 
+
+
+Solution 2:  used ArrayDeque DS comes under Queue>Deque interface, modern class, no thread safe overhead, It has exactly similar methods no other change
+
+import java.util.*;
+class Solution {
+    public boolean isValid(String s) {
+       Deque<Character> st=new ArrayDeque<>();
+        
+       for(int i=0;i<s.length();i++)
+       {
+            char curr=s.charAt(i);
+           if(curr=='(' || curr=='{' || curr=='[' )
+           {
+                st.push(curr);
+           }else
+           {
+            if(st.isEmpty())
+            {
+                return false;
+            }
+             char prev=st.peek();
+             if((curr==')' && prev=='(') || (curr=='}' && prev=='{') || (curr==']' && prev=='['))
+             {
+                st.pop();
+             }else
+             {
+                return false;
+             }
+
+           }
+       } 
+        
+
+
+        return st.isEmpty();
+    }
+}
