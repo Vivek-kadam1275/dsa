@@ -22,4 +22,30 @@ Constraints:
 strs[i] consists of only lowercase English letters if it is non-empty.
 
 
-Solution 1: BruteForce
+Solution 1: BruteForce: just compare first string characters with remaining string of array, if same exists then append it to StringBuilder else return the latest StringBuilder.
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        
+        StringBuilder str=new StringBuilder("");
+        
+       
+        for(int i=0;i<strs[0].length();i++)
+        {
+            char com=strs[0].charAt(i);
+            for(int j=1;j<strs.length;j++)
+            {
+                String cur=strs[j];
+                if( i > cur.length()-1 || com !=cur.charAt(i))
+                {
+                    return str.toString();
+                }
+            }
+            str.append(com);
+        }
+
+        return str.toString();
+        
+    }
+}
+
