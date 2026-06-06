@@ -19,3 +19,14 @@ Constraints:
 
 1 <= haystack.length, needle.length <= 104
 haystack and needle consist of only lowercase English characters.
+
+
+
+
+Solution 1: using String method indexOf() to return the first index of needle in hayStack string
+class Solution {
+    public int strStr(String haystack, String needle) {
+        
+        return haystack.indexOf(needle);
+    }
+}
