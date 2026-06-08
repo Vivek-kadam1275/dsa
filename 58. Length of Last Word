@@ -27,3 +27,13 @@ Constraints:
 s consists of only English letters and spaces ' '.
 There will be at least one word in s.
  
+
+Solution 1: Using trim , split and length methods of String
+class Solution {
+    public int lengthOfLastWord(String s) {
+
+            String str=s.trim();
+            String[] arr=str.split(" ");
+            return arr[arr.length-1].length();  
+    }
+}
