@@ -37,3 +37,28 @@ class Solution {
             return arr[arr.length-1].length();  
     }
 }
+
+
+Solution 2: Optimal: Not using existing methods of String, maintaining pointer for index of last letter and thent using while loop till first space before that letter to get the length of last word
+class Solution {
+    public int lengthOfLastWord(String s) {
+ 
+        // finding the last index of last word, by cancelling training spaces
+        int i=s.length()-1;
+
+        while(i>=0 && s.charAt(i)==' '){
+            i--;
+        }
+
+
+        int length=0;
+        while(i>=0 && s.charAt(i)!=' ')
+        {
+            length++;
+            i--;
+        }
+
+        return length;
+    }
+}
+
