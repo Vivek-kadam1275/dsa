@@ -102,3 +102,41 @@ class Solution {
             return str.reverse().toString();
     }
 }
+
+
+Solution 2: 
+class Solution {
+    public String addBinary(String a, String b) {
+            int i=a.length()-1;
+            int j=b.length()-1;
+            int carry=0;
+            int digit;
+            StringBuilder str=new StringBuilder("");
+            while(i>=0 || j>=0 || carry!=0)
+            {
+
+                int result=0;
+                if(i>=0)
+                {
+                     int first=a.charAt(i)-48;
+                     result+=first;
+                     i--;
+                }
+               
+               if(j>=0)
+               {
+                    int second=b.charAt(j)-48;
+                    result+=second;
+                    j--;
+               }
+               
+                result+=carry;
+
+                digit=result%2;
+                carry=result/2;
+                str.append(digit);   
+            }
+            
+            return str.reverse().toString();
+    }
+}
