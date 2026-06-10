@@ -29,3 +29,28 @@ Constraints:
 1 <= nums.length <= 3 * 104
 -3 * 104 <= nums[i] <= 3 * 104
 Each element in the array appears twice except for one element which appears only once.
+
+
+
+Solution 1: using double for loop i.e nsquare time complexity; if same number doesnot exists in second for loop then return that element.
+class Solution {
+    public int singleNumber(int[] nums) {
+
+        for(int i=0;i<nums.length;i++)
+        {
+            boolean flag=false;
+            for(int j=0;j<nums.length;j++)
+            {
+                if(i!=j && nums[i]==nums[j])
+                {
+                    flag=true;
+                }
+            }
+            if(!flag)
+            {
+                return nums[i];
+            }
+        }   
+        return 0;
+    }
+}
