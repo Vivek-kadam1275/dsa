@@ -53,3 +53,35 @@ class Solution {
         return sqrt;
     }
 }
+
+
+
+Solution 2: Removing edge cases, handling the integer overflow case, but its time complexity is also high than first solution
+class Solution {
+    public int mySqrt(int x) {
+        int sqrt=0;
+
+        if(x==1){
+            return x;
+        }
+        // if(x==2147395600)
+        // {
+        //     return 46340;
+        // }
+        // if(x==2147483647)
+        // {
+        //     return 46340;
+        // }
+        for(int i=1;i<=x/2;i++)
+        {
+            if(i<=x/i)
+            {
+                sqrt=i;
+            }else
+            {
+                break;
+            }
+        }
+        return sqrt;
+    }
+}
