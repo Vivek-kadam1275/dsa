@@ -65,3 +65,42 @@ class Solution {
 
     
 }
+
+
+
+Solution 2: Optimal- In place modification, not created new matrix for storing transpose of matrix. 
+             outer for loop for maintaining row and inner loop for maintaining the column whose number will be  start from row. 
+             so you can do optimally swapping of numbers for transpose i,j=j,i 
+
+class Solution {
+    public void rotate(int[][] matrix) {
+        // make transpose of matrix inplace
+
+        int length=matrix.length;
+        for(int i=0;i<length;i++)
+        {
+            for(int j=i+1;j<length;j++)
+            {
+                int temp=matrix[i][j];
+                matrix[i][j]=matrix[j][i];
+                matrix[j][i]=temp;
+            }
+        }
+
+        // swap the numbers using two pointers
+
+        for(int i=0;i<length;i++)
+        {
+            int l=0;
+            int r=length-1;
+            while(l<r)
+            {
+                int temp=matrix[i][l];
+                matrix[i][l]=matrix[i][r];
+                matrix[i][r]=temp;
+                l++;
+                r--;
+            }
+        }
+    }
+}
