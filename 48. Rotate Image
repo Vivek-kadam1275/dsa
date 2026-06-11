@@ -70,7 +70,7 @@ class Solution {
 
 Solution 2: Optimal- In place modification, not created new matrix for storing transpose of matrix. 
              outer for loop for maintaining row and inner loop for maintaining the column whose number will be  start from row. 
-             so you can do optimally swapping of numbers for transpose i,j=j,i 
+             so you can do optimally swapping of numbers for transpose i,j to j,i
 
 class Solution {
     public void rotate(int[][] matrix) {
