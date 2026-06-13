@@ -84,3 +84,42 @@ class Solution {
         return 0;
     }
 }
+
+
+
+
+Solution 3: Optimal( good approach for interview )
+            Boyer-Moore Voting Algorithm 
+            Think like this:
+
+Majority element appears more than all others combined
+Non-majority elements cancel it out, but still one survives
+
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        int candidate=0;
+        int count=0;
+
+        for(int i=0;i<nums.length;i++)
+        {
+            
+            if(count==0)
+            {
+                candidate=nums[i];
+            }
+            if(candidate==nums[i])
+            {
+                count++;
+            }else{
+                count--;
+            }
+        }
+
+        return candidate;
+
+    }
+}
+
+     
