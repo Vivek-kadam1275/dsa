@@ -52,3 +52,35 @@ class Solution {
         return 0;
     }
 }
+
+
+
+Solution 2: Using HashMap, it will store key-(nums[i]) and value( number of times it is present in nums array)
+            later iterate on map, and check whether the value of that key is greater than n/2. 
+            If yes then return key else go for outer loop return 0;
+
+import java.util.*;
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int n=nums.length;
+        for(int i=0;i<n;i++)
+        {
+            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+            // System.out.println(map.get(nums[i]));
+        }
+
+        for(Map.Entry<Integer,Integer> entry:map.entrySet())
+        {
+          
+        //   System.out.println(entry.getKey()+"   "+entry.getValue());
+            if(entry.getValue()>n/2)
+            {
+                  
+                return entry.getKey();
+            }
+        }
+
+        return 0;
+    }
+}
